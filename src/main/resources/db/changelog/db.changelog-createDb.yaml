@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-createDb.yaml
+  - changeSet:
+      id: 1
+      author: devolek
+      changes:
+        - createTable:
+            tableName: cupboards
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+        - createTable:
+            tableName: inventories
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: cupboard_id
+                  type: INT
+        - createTable:
+            tableName: cupboards2inventory
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: cupboard_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inventory_id
+                  type: INT
+                  constraints:
+                    nullable: false

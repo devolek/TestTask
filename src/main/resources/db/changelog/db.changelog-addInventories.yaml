@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-addInventories.yaml
+  - changeSet:
+      id: 1
+      author: devolek
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: server_1
+            tableName: inventories
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: disk array_1
+            tableName: inventories
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: name
+                  value: UPS_1
+            tableName: inventories

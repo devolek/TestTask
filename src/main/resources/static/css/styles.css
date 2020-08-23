@@ -1,0 +1,55 @@
+* {
+    font-family: Arial;
+}
+
+#inventory-change-form, #cupboard-change-form, #add-inventory-in-cupboard-form {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: #88888878;
+}
+
+#inventory-change-form form, #cupboard-change-form form, #add-inventory-in-cupboard-form form {
+    background-color: white;
+    border: 1px solid #333;
+    width: 300px;
+    padding: 20px;
+}
+
+#inventory-change-form h2, #cupboard-change-form h2, #add-inventory-in-cupboard-form h2 {
+    margin-top: 0;
+}
+
+#inventory-change-form label, #cupboard-change-form label, #add-inventory-in-cupboard-form label {
+    display: block;
+}
+
+#inventory-change-form form > *, #cupboard-change-form form > *, #add-inventory-in-cupboard-form form > * {
+    margin-bottom: 5px;
+}
+
+h4 {
+    margin-bottom: 0;
+}
+
+table {
+    width: 100%; /* Ширина таблицы */
+    border: 4px double black; /* Рамка вокруг таблицы */
+    border-collapse: collapse; /* Отображать только одинарные линии */
+}
+th {
+    text-align: left; /* Выравнивание по левому краю */
+    background: #ccc; /* Цвет фона ячеек */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+}
+td {
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+}

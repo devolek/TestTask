@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Cupboards</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Cupboard</th>
+        <th> Inventories</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${cupboards.empty}">
+        <td colspan="2"> No Cupboards Available</td>
+    </tr>
+    <tr th:each="cupboard : ${cupboards}">
+        <td><span th:text="${cupboard.name}"> Name </span>
+            <a href="#" class="cupboard-delete" th:attr="data-id=${cupboard.id}"><span style="color: red; ">X</span></a>
+            <a href="#" class="cupboard-change" th:attr="data-id=${cupboard.id}"><span style="color: orange; ">Change cupboard</span></a>
+            <a href="#" class="inventory-in-cupboard" th:attr="data-id=${cupboard.id}"><span style="color: cadetblue; ">Add inventory</span></a><br>
+        </td>
+        <td>
+            <th:block th:each="inventory : ${cupboard.inventories}"><span th:text="${inventory.name}"> Inventory </span>
+                <a href="#" class="delete-inventory-in-cupboard" th:attr="data-id=${inventory.id}"><span
+                        style="color: red; ">X</span></a>
+                <br>
+            </th:block>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p><a href="/add/cupboard">Add cupboard</a></p>
+<p><a href="/">Main page</a></p>
+
+<div id="cupboard-change-form">
+
+</div>
+
+<div id="add-inventory-in-cupboard-form">
+
+</div>
+
+<script th:inline="javascript">
+    $(function () {
+        //Show inventory in cupboard add form
+        $(document).on('click', '.inventory-in-cupboard', function () {
+            const link = $(this);
+            const cupboardId = link.data('id');
+            /*<![CDATA[*/
+            const inventories = [[${inventories}]];
+            /*]]>*/
+            let cupboardCode = '<form>' +
+                '<h2>Add inventory</h2>' +
+                '<label>Inventory:</label>' +
+                '<select name="inventory_id" id="inventory_id">' +
+                '<option value=""> -- </option>';
+            for (let inventory of inventories) {
+                cupboardCode = cupboardCode + '<option value="' + inventory.id + '"> ' + inventory.name + '</option>'
+            }
+            cupboardCode = cupboardCode + '</select>' +
+                '<hr><a href="#" class="add-inventory-in-cupboard" data-id="' +
+                cupboardId + '">Add</a></form><br>';
+            $('#add-inventory-in-cupboard-form')
+                .append('<div>' + cupboardCode + '</div>');
+            $('#add-inventory-in-cupboard-form').css('display', 'flex');
+
+        });
+
+        //Closing inventory in cupboard add form
+        $('#add-inventory-in-cupboard-form').click(function (event) {
+            if (event.target === this) {
+                $(this).html('')
+                $(this).css('display', 'none');
+            }
+        });
+    })
+</script>
+</body>
+</html>

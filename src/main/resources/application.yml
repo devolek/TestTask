@@ -1,0 +1,10 @@
+#DB properties:
+db.driver: com.mysql.jdbc.Driver
+db.url: jdbc:mysql://localhost:3306/inventory_manager?createDatabaseIfNotExist=true&useUnicode=true&useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+db.username: root
+db.password: testtest
+
+#Hibernate Configuration:
+db.hibernate.dialect: org.hibernate.dialect.MySQLDialect
+db.entitymanager.packages.to.scan: ru.devolek.testtask.model
+db.hibernate.hbm2ddl.auto: none

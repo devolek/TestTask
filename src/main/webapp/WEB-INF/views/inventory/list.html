@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/main.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Inventories</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Inventory</th>
+        <th> Cupboard</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${inventories.empty}">
+        <td colspan="2"> No Inventories Available</td>
+    </tr>
+    <tr th:each="inventory : ${inventories}">
+        <td><span th:text="${inventory.name}"> Name </span>
+            <a href="#" class="inventory-delete" th:attr="data-id=${inventory.id}"><span
+                    style="color: red; ">X</span></a>
+            <a href="#" class="inventory-change" th:attr="data-id=${inventory.id}"><span style="color: orange; ">Change inventory</span></a><br>
+        </td>
+        <td><span th:text="${inventory.cupboardName}"> Cupboard </span></td>
+
+    </tr>
+    </tbody>
+</table>
+
+<p><a href="/add/inventory">Add inventory</a></p>
+<p><a href="/">Main page</a></p>
+
+<div id="inventory-change-form">
+
+</div>
+</body>
+</html>
